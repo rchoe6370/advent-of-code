@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Day1 {
     public static void main(String[] args) throws FileNotFoundException {
 
-        File file = new File("input.txt");
+        File file = new File("day1/input.txt");
         Scanner sc = new Scanner(file);
 
         int zeroCount = 0;
@@ -22,14 +22,14 @@ public class Day1 {
             
             if(direction.equals("L")) {
                 pos = pos - rotation;
+                pos = pos % 100;
+
                 if(pos < 0) {
-                    pos = 100 + pos;
+                    pos = pos + 100;
                 }
             } else {
                 pos = pos + rotation;
-                if(pos > 99) {
-                    pos = pos - 100;    
-                }
+                pos = pos % 100;
             }
 
 
