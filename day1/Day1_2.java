@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Day1 {
+public class Day1_2 {
     public static void main(String[] args) throws FileNotFoundException {
 
         File file = new File("day1/input.txt");
@@ -21,20 +21,27 @@ public class Day1 {
             int rotation = Integer.valueOf(line.substring(1));
             
             if(direction.equals("L")) {
-                pos = pos - rotation;
-                pos = pos % 100;
-
-                if(pos < 0) {
-                    pos = pos + 100;
+                for(int i = 0; i < rotation; i++) {
+                    pos--;
+                    if(pos < 0) {
+                        pos = 99;
+                    }
+                    if(pos == 0) {
+                        zeroCount++;
+                    }
                 }
+
             } else {
-                pos = pos + rotation;
-                pos = pos % 100;
-            }
+                for(int i = 0; i < rotation; i++) {
+                    pos++;
+                    if(pos > 99) {
+                        pos = 0;
+                    }
 
-
-            if(pos == 0) {
-                zeroCount++;
+                    if(pos == 0) {
+                        zeroCount++;
+                    }
+                }
             }
 
         
@@ -44,6 +51,4 @@ public class Day1 {
 
         sc.close();
     }
-
-
 }
